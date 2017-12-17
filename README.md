@@ -6,6 +6,12 @@ Errs
 ```
 ErrValueTooLarge : content size larger available buffer len
 ErrUnexpectedEOF: do you want buffer avaialble? but buffer is zero bytes
+ErrCanonSize: Reject strings that should've been single bytes.
+Ex:
+if contentsize == 1 && len(buf) > 1 && buf[1] < 128 {
+			return 0, 0, 0, ErrCanonSize
+		}
+		
 ```
 
 ```go
